@@ -781,6 +781,8 @@ class Facebook(OAuth2):
                        'user_location']
     same_origin = False
 
+    supports_csrf_protection = False
+
     supported_user_attributes = core.SupportedUserAttributes(
         birth_date=True,
         city=True,

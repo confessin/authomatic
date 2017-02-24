@@ -271,3 +271,36 @@ class WerkzeugAdapter(BaseAdapter):
 
     def set_status(self, status):
         self.response.status = status
+
+
+class FalconAdapter(BaseAdapter):
+    def __init__(self, request, response, session):
+        """
+        :request: <falcon.request.Request object>
+        :response: <falcon.response.Response>
+        """
+        self.request = request
+        self.response = response
+        self.session = session
+
+    @property
+    def params(self):
+        return self.request.params
+
+    @property
+    def url(self):
+        return self.request.url
+
+    @property
+    def cookies(self):
+        #print ("Getting cookies" + str(self.session))
+        return self.request.cookies
+
+    def write(self, value):
+        self.response.data = value
+
+    def set_header(self, key, value):
+        self.response.set_header(key, value)
+
+    def set_status(self, status):
+        self.response.status = status
