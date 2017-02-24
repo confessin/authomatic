@@ -286,13 +286,13 @@ class BaseProvider(object):
     def _session_set(self, key, value):
         """Saves a value to session."""
         
-        self.session[self._session_key(key)] = value
+        self.session.adapter.session[self._session_key(key)] = value
     
     
     def _session_get(self, key):
         """Retrieves a value from session."""
         
-        return self.session.get(self._session_key(key))
+        return self.session.adapter.session.get(self._session_key(key))
     
     
     @staticmethod
